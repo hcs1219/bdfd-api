@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDFD Search Functions/Callbacks API</title>
+    <meta name="description" content="Offical API: https://nilpointer-software.github.io/bdfd-wiki/resources/api.html">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/highlight/night-owl.min.css">
+    <script src="/highlight/highlight.min.js"></script>
+  </head>
+  <body style="background-color:#36393f;color:white;">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@250&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nunito:wght@300&display=swap');
+
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+      }
+      button {
+        width: 2em;
+        height: 2em;
+        border: 0;
+        background-color: transparent;
+        background-image: url("/sources/search.png");
+        background-size: cover;
+        vertical-align: middle;
+       }
+    </style>
+    <header style="text-align:center;border-bottom:thin solid white;margin-bottom:10px;">
+      <a href="/api" style="color:white;text-decoration:none;font-size:60px;font-family:'Montserrat', sans-serif;">API</a>
+    </header>
+    <div style="font-family:'Nunito', sans-serif;text-align:center;">
+      <form>
+        <div>
+          <select name="search" style="background:none;font-size:16px;color:white;border:none;border-bottom: 0.5px solid white;">
+            <option value="function" selected>Function</option>
+            <option value="callback">Callback</option>
+          </select>
+          <label for="search">:</label>
+          <label for="q">$</label>
+          <input id="search" name="q" placeholder="nomention" required>
+          <button type="submit"></button>
+        </div>
+        <div>
+          <input id="case_sensitive" type="checkbox" checked>
+          <label>Case Sensitive</label>
+        </div>
+        <input id="cs" style="display:none;" name="case_sensitive" value="true">
+        </form>
+      </div>
+    <pre><code class="language-json" style="text-align:left;margin:0 auto;height:60vh;width:90vw;resize:none;"></code></pre>
+    <script>
+      "use strict";
+      
+      const showResult = () => {
+        $.get(`/api/${$('select').val()}?case_sensitive=${$('#case_sensitive').is(':checked')}&q=$${$('#search').val().trim()}`, data => {
+          $('code').html(JSON.stringify(data, null, 2).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll('\'', '&#39;'));
+          hljs.highlightElement(document.querySelectorAll('code')[0]);
+          
+        });
+      };
+      
+      $(document).ready(() => {
+        let params = new URLSearchParams(window.location.search),
+          search = params.get('search')?.toLowerCase(),
+          q = params.get('q'),
+          case_sensitive = params.get('case_sensitive');
+        if ((search == 'function' || search == 'callback') && (q || q != '')) {
+          $('select').val(search).change();
+          if (search == 'function') {
+            $('#search').attr('placeholder', 'nomention');
+          } else if (search == 'callback') {
+            $('#search').attr('placeholder', 'alwaysReply');
+          };
+          if (case_sensitive == 'false') {
+            $('#case_sensitive').prop('checked', false);
+          };
+          $('#search').val(q.replace('$', ''));
+          showResult();
+        };
+      });
+      
+      $('select').change(() => {
+        if (event?.target.value == 'function') {
+          $('#search').attr('placeholder', 'nomention');
+        } else if (event?.target.value == 'callback') {
+          $('#search').attr('placeholder', 'alwaysReply');
+        };
+      });
+
+      $('form').submit(() => {
+        $('#cs').val($('#case_sensitive').is(':checked'));
+        showResult();
+      });
+    </script>
+  </body>
+</html>
