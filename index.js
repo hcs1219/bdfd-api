@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   Log(req, res);
 });
 
+app.get('/search.png', (req, res) => {
+  res.sendFile(__dirname + '/search.png');
+});
+
 fs.readdirSync('./highlight').forEach(x => {
   app.get(`/highlight/${x}`, (req,res) => {
     res.sendFile(__dirname + '/highlight' + x);
