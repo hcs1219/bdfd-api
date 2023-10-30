@@ -7,19 +7,13 @@ const express = require('express'),
   };
 
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
+  res.sendFile(__dirname + '/index.html');
   Log(req, res);
 });
 
 fs.readdirSync('./highlight').forEach(x => {
   app.get(`/highlight/${x}`, (req,res) => {
-    res.sendFile(x, { root: __dirname + '/highlight' });
-  });
-});
-
-fs.readdirSync('./sources').forEach(x => {
-  app.get(`/sources/${x}`, (req,res) => {
-    res.sendFile(x, { root: __dirname + '/sources' });
+    res.sendFile(__dirname + '/highlight' + x);
   });
 });
 
