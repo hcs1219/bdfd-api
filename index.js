@@ -65,7 +65,7 @@ app.use('/api/discord', (req, res) => {
     axios.get(`https://discord.com/api${endpoint.join('/')}`, {
       validateStatus: () => true,
       headers: {
-        Authorization: `Bot ${process.env.TOKEN}`
+        Authorization: `Bot MTE2ODQ2OTMyOTE0MzE1Njc3Nw.GYPxqf.gljY2OFdL-RWS_K8iWYAaltLrfv4Motles3-S4`
       }
     }).then(x => {
       res.set('Content-Type', 'application/json').send(JSON.stringify(x.data, null, 2));
