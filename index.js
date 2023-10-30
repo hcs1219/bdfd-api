@@ -17,7 +17,7 @@ app.get('/search.png', (req, res) => {
 
 fs.readdirSync('./highlight').forEach(x => {
   app.get(`/highlight/${x}`, (req,res) => {
-    res.sendFile(__dirname + '/highlight' + x);
+    res.sendFile(__dirname + '/highlight' + `/${x}`);
   });
 });
 
