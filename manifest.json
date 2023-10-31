@@ -1,9 +1,9 @@
 {
   "name": "BDFD Search Functions/Callbacks API",
-  "short_name": "BDFD API",
+  "short_name": "BDFD Search",
   "icons": [
     {
-      "src": "search.png",
+      "src": "bdfd.png",
       "sizes": "192x192",
       "type": "image/png"
     }
