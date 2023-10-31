@@ -16,7 +16,7 @@ app.get('/search.png', (req, res) => {
 });
 
 app.get('/icon.png', (req, res) => {
-  res.sendFile(__dirname + '/bdfd.png');
+  res.sendFile(__dirname + '/icon.png');
 });
 
 app.get('/manifest.json', (req, res) => {
