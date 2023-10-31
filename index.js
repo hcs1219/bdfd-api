@@ -11,10 +11,6 @@ app.get('/', (req, res) => {
   Log(req, res);
 });
 
-app.get('/search.png', (req, res) => {
-  res.sendFile(__dirname + '/search.png');
-});
-
 app.get('/icon.png', (req, res) => {
   res.sendFile(__dirname + '/icon.png');
 });
