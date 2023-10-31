@@ -1,0 +1,15 @@
+{
+  "name": "BDFD Search Functions/Callbacks API",
+  "short_name": "BDFD API",
+  "icons": [
+    {
+      "src": "search.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#36393f",
+  "theme_color": "#36393f"
+}
