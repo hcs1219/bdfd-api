@@ -15,7 +15,7 @@ app.get('/search.png', (req, res) => {
   res.sendFile(__dirname + '/search.png');
 });
 
-app.get('/bdfd.png', (req, res) => {
+app.get('/icon.png', (req, res) => {
   res.sendFile(__dirname + '/bdfd.png');
 });
 
