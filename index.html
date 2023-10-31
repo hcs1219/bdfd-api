@@ -10,31 +10,14 @@
     <script src="/highlight/highlight.min.js"></script>
     <link rel="manifest" href="manifest.json">
   </head>
-  <body style="background-color:#36393f;color:white;">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@250&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nunito:wght@300&display=swap');
-      
-      input:focus, select:focus, textarea:focus {
-        outline: none;
-      }
-      button {
-        width: 2em;
-        height: 2em;
-        border: 0;
-        background-color: transparent;
-        background-image: url("search.png");
-        background-size: cover;
-        vertical-align: middle;
-       }
-    </style>
-    <header style="text-align:center;border-bottom:thin solid white;margin-bottom:10px;">
-      <a href="/api" target="_blank" style="color:blue;text-decoration:none;font-size:40px;font-family:'Montserrat', sans-serif;">API</a>
+  <body>
+    <header style="text-align:center;border-bottom:thin solid black;margin-bottom:10px;">
+      <a href="/api" target="_blank" style="color:blue;text-decoration:none;">API</a>
     </header>
-    <div style="font-family:'Nunito', sans-serif;text-align:center;">
+    <div style="text-align:center;">
       <form>
         <div>
-          <select name="search" style="background:none;font-size:16px;color:white;border:none;border-bottom: 0.5px solid white;">
+          <select name="search">
             <option value="function" selected>Function</option>
             <option value="callback">Callback</option>
           </select>
