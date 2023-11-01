@@ -22,8 +22,7 @@ app.get('/', (req, res) => {
           }
         },
         "/discord": {
-          "PATH": "just the same path with discord api",
-          "EXAMPLE": "/v10/users/@me",
+          "PATH": "/v{version_number}/path/path/...",
           "(token_type)": "TOKEN_TYPE",
           "(token)": "TOKEN"
         }
