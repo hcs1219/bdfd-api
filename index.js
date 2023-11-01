@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     },
     {
       "/api": {
-        "/bdfd": {
+        "/bdfd": [{
           "/function": {
             "method": "GET",
             "parameter": {
@@ -26,18 +26,18 @@ app.get('/', (req, res) => {
               "(case_sensitive)": "BOOLEAN"
             }
           }
-        },
-        "/discord": {
+        }],
+        "/discord": [{
           "/v{version_number}/path/...": {
             "parameter": {
               "(token_type)": "TOKEN_TYPE",
               "(token)": "TOKEN"
             }
           }
-        }
+        }]
       }
     }
-  ], null, 1));
+  ], null, 2));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
