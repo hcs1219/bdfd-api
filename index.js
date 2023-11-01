@@ -5,8 +5,8 @@ const express = require('express'),
 
 app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify({
-    "/api": [{
-      "/bdfd": [{
+    "/api": {
+      "/bdfd": {
         "/function": {
           "method": "GET",
           "parameter": {
@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
             "(case_sensitive)": "BOOLEAN"
           }
         }
-      }],
-      "/discord": [{
+      },
+      "/discord": {
         "/v{version_number}/path/...": {
           "method": "GET",
           "parameter": {
@@ -30,10 +30,13 @@ app.get('/', (req, res) => {
             "(token)": "TOKEN"
           }
         }
-      }]
-    }],
+      }
+    },
     "github": "hcs1219/bdfd-api",
-    "domain": ["bdfd.wiki", "bdfd-api.vercel.app"]
+    "domain": [
+      "bdfd.wiki",
+      "bdfd-api.vercel.app"
+    ]
   }, null, 2));
 });
 
