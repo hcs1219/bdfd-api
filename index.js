@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
         }
       }
     }
-  ], null, 3));
+  ], null, 1));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
