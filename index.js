@@ -7,26 +7,8 @@ const express = require('express'),
   };
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-  Log(req, res);
-});
-
-app.get('/icon.png', (req, res) => {
-  res.sendFile(__dirname + '/icon.png');
-});
-
-app.get('/manifest.json', (req, res) => {
-  res.sendFile(__dirname + '/manifest.json');
-});
-
-fs.readdirSync('./highlight').forEach(x => {
-  app.get(`/highlight/${x}`, (req,res) => {
-    res.sendFile(__dirname + '/highlight' + `/${x}`);
-  });
-});
-
-app.get('/api', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify({
+    "/api": {
     "/function": {
       "q": "FUNCTION_TAG",
       "(case_sensitive)": "BOOLEAN"
@@ -34,8 +16,11 @@ app.get('/api', (req, res) => {
     "/callback": {
       "q": "CALLBACK_NAME",
       "(case_sensitive)": "BOOLEAN"
+    },
+    "/discord": {
+      "": "just the same path with discord api"
     }
-  }, null, 2));
+}}, null, 2));
   Log(req, res);
 });
 
