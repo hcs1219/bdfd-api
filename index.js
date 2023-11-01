@@ -10,34 +10,44 @@ app.get('/', (req, res) => {
       "domain": ["bdfd.wiki", "bdfd-api.vercel.app"]
     },
     {
-      "/api": {
-        "/bdfd": [{
-          "/function": {
-            "method": "GET",
-            "parameter": {
-              "q": "FUNCTION_TAG",
-              "(case_sensitive)": "BOOLEAN"
+      "/api": [
+        {
+          "/bdfd": [
+            {
+              "/function": {
+                "method": "GET",
+                "parameter": {
+                  "q": "FUNCTION_TAG",
+                  "(case_sensitive)": "BOOLEAN"
+                }
+              }
+            },
+            {
+              "/callback": {
+                "method": "GET",
+                "parameter": {
+                  "q": "CALLBACK_NAME",
+                  "(case_sensitive)": "BOOLEAN"
+                }
+              }
             }
-          },
-          "/callback": {
-            "method": "GET",
-            "parameter": {
-              "q": "CALLBACK_NAME",
-              "(case_sensitive)": "BOOLEAN"
+          ]
+        },
+        {
+          "/discord": [
+            {
+              "/v{version_number}/path/...": {
+                "parameter": {
+                  "(token_type)": "TOKEN_TYPE",
+                  "(token)": "TOKEN"
+                }
+              }
             }
-          }
-        }],
-        "/discord": [{
-          "/v{version_number}/path/...": {
-            "parameter": {
-              "(token_type)": "TOKEN_TYPE",
-              "(token)": "TOKEN"
-            }
-          }
-        }]
-      }
+          ]
+        }
+      ]
     }
-  ], null, 2));
+  ], null, 1));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
