@@ -7,7 +7,6 @@ app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify([
     {
       "github": "hcs1219/bdfd-api",
-      "version": "1.0.0",
       "domains": ["bdfd.wiki", "bdfd-api.vercel.app"],
       "protocol": ["https", "http"]
     },
