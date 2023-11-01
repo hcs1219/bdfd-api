@@ -4,7 +4,7 @@ const express = require('express'),
   fs = require('fs');
 
 app.get('/', (req, res) => {
-  res.set('Content-Type', 'application/json').send(JSON.stringify(
+  res.set('Content-Type', 'application/json').send(JSON.stringify([
     {
       "version": "1.0.0",
       "domain": "bdfd.wiki",
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
         }
       }
     }
-    , null, 2));
+  ], null, 2));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
