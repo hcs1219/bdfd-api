@@ -4,51 +4,37 @@ const express = require('express'),
   fs = require('fs');
 
 app.get('/', (req, res) => {
-  res.set('Content-Type', 'application/json').send(JSON.stringify([
-    {
-      "github": "hcs1219/bdfd-api",
-      "domain": ["bdfd.wiki", "bdfd-api.vercel.app"]
-    },
-    {
-      "/api": [
-        {
-          "/bdfd": [
-            {
-              "/function": {
-                "method": "GET",
-                "parameter": {
-                  "q": "FUNCTION_TAG",
-                  "(case_sensitive)": "BOOLEAN"
-                }
-              }
-            },
-            {
-              "/callback": {
-                "method": "GET",
-                "parameter": {
-                  "q": "CALLBACK_NAME",
-                  "(case_sensitive)": "BOOLEAN"
-                }
-              }
-            }
-          ]
+  res.set('Content-Type', 'application/json').send(JSON.stringify({
+    "/api": [{
+      "/bdfd": [{
+        "/function": {
+          "method": "GET",
+          "parameter": {
+            "q": "FUNCTION_TAG",
+            "(case_sensitive)": "BOOLEAN"
+          }
         },
-        {
-          "/discord": [
-            {
-              "/v{version_number}/path/...": {
-                "method": "GET",
-                "parameter": {
-                  "(token_type)": "TOKEN_TYPE",
-                  "(token)": "TOKEN"
-                }
-              }
-            }
-          ]
+        "/callback": {
+          "method": "GET",
+          "parameter": {
+            "q": "CALLBACK_NAME",
+            "(case_sensitive)": "BOOLEAN"
+          }
         }
-      ]
-    }
-  ], null, 2));
+      }],
+      "/discord": [{
+        "/v{version_number}/path/...": {
+          "method": "GET",
+          "parameter": {
+            "(token_type)": "TOKEN_TYPE",
+            "(token)": "TOKEN"
+          }
+        }
+      }]
+    }],
+    "github": "hcs1219/bdfd-api",
+    "domain": ["bdfd.wiki", "bdfd-api.vercel.app"]
+  }, null, 2));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
