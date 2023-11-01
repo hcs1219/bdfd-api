@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
           "/function": {
             "method": "GET",
             "parameter": {
-              "q": "FUNCTION_TAG"
+              "q": "FUNCTION_TAG",
               "(case_sensitive)": "BOOLEAN"
             }
           },
