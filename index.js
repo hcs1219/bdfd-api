@@ -6,6 +6,7 @@ const express = require('express'),
 app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify([
     {
+      "github": "https://github.com/hcs1219/bdfd-api",
       "version": "1.0.0",
       "domain": "bdfd.wiki",
       "protocol": "https"
