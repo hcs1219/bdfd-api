@@ -1,31 +1,33 @@
 const express = require('express'),
   app = express(),
   axios = require('axios'),
-  fs = require('fs'),
-  Log = (req, res) => {
-    console.log(`\n\x1b[4m%s\x1b[0m\n\x1b[34m%s\x1b[0m: \x1b[33m${req.method} \x1b[0n\x1b[${res.statusCode < 400?'32':'41'}m%s\x1b[0m`, new Date(), req.headers['x-forwarded-for'] || req.socket.remoteAddress, req.originalUrl);
-  };
+  fs = require('fs');
 
 app.get('/', (req, res) => {
-  res.set('Content-Type', 'application/json').send(JSON.stringify({
-    "/api": {
-    "/function": {
-      "q": "FUNCTION_TAG",
-      "(case_sensitive)": "BOOLEAN"
-    },
-    "/callback": {
-      "q": "CALLBACK_NAME",
-      "(case_sensitive)": "BOOLEAN"
-    },
-    "/discord": {
-      "": "just the same path with discord api"
+  res.set('Content-Type', 'application/json').send(JSON.stringify(
+    {
+      "/api": {
+        "/bdfd": {
+          "/function": {
+            "q": "FUNCTION_TAG",
+            "(case_sensitive)": "BOOLEAN"
+          },
+          "/callback": {
+            "q": "CALLBACK_NAME",
+            "(case_sensitive)": "BOOLEAN"
+          }
+        },
+        "/discord": {
+          "PATH": "just the same path with discord api",
+          "EXAMPLE": "/v10/users/@me"
+        }
+      }
     }
-}}, null, 2));
-  Log(req, res);
+    , null, 2));
 });
 
-app.get('/api/:x', (req, res, next) => {
-  let endpoint = req.path.split('/')[2],
+app.get('/api/bdfd/:x', (req, res, next) => {
+  let endpoint = req.path.split('/')[3],
     params = req.query;
   if (endpoint == 'function' || endpoint == 'callback') {
     try {
@@ -41,12 +43,13 @@ app.get('/api/:x', (req, res, next) => {
         res.set('Content-Type', 'application/json').send(JSON.stringify(arr, null, 2));
       });
     } catch (err) {
-      console.log(err);
+      res.json({
+        "error": err
+      });
     };
   } else {
     next();
   };
-  Log(req, res);
 });
 
 app.use('/api/discord', (req, res) => {
@@ -62,11 +65,10 @@ app.use('/api/discord', (req, res) => {
       res.set('Content-Type', 'application/json').send(JSON.stringify(x.data, null, 2));
     });
   } catch (err) {
-    console.log(err);
+    res.json({
+      "error": err
+    });
   };
-  Log(req, res);
 });
 
-let listener = app.listen(process.env.SERVER_PORT, () => {
-  console.log(`Server Running on port: ${listener.address().port}`);
-});
+app.listen(process.env.SERVER_PORT);
