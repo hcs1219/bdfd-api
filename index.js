@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
   Log(req, res);
 });
 
-app.get('/api/:x', (req, res) => {
+app.get('/api/:x', (req, res, next) => {
   let endpoint = req.path.split('/')[2],
     params = req.query;
   if (endpoint == 'function' || endpoint == 'callback') {
@@ -58,6 +58,8 @@ app.get('/api/:x', (req, res) => {
     } catch (err) {
       console.log(err);
     };
+  } else {
+    next();
   };
   Log(req, res);
 });
