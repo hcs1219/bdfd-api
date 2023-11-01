@@ -6,6 +6,9 @@ const express = require('express'),
 app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify(
     {
+      "version": "1.0.0"
+    },
+    {
       "/api": {
         "/bdfd": {
           "/function": {
