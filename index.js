@@ -11,9 +11,7 @@ app.get('/', (req, res) => {
     },
     {
       "/api": {
-        
         "/bdfd": {
-          
           "/function": {
             "method": "GET",
             "parameter": {
@@ -29,17 +27,17 @@ app.get('/', (req, res) => {
             }
           }
         },
-        
         "/discord": {
-          
           "/v{version_number}/path/...": {
-            "(token_type)": "TOKEN_TYPE",
-            "(token)": "TOKEN"
+            "parameter": {
+              "(token_type)": "TOKEN_TYPE",
+              "(token)": "TOKEN"
+            }
           }
         }
       }
     }
-  ], null, 2));
+  ], null, 3));
 });
 
 app.get('/api/bdfd/:x', (req, res, next) => {
