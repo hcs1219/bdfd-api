@@ -8,8 +8,8 @@ app.get('/', (req, res) => {
     {
       "github": "hcs1219/bdfd-api",
       "version": "1.0.0",
-      "domain": ["bdfd.wiki", "bdfd-api.vercel.app"],
-      "protocol": "https"
+      "domains": ["bdfd.wiki", "bdfd-api.vercel.app"],
+      "protocol": ["https", "http"]
     },
     {
       "/api": {
