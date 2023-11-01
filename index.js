@@ -7,24 +7,35 @@ app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify([
     {
       "github": "hcs1219/bdfd-api",
-      "domains": ["bdfd.wiki", "bdfd-api.vercel.app"]
+      "domain": ["bdfd.wiki", "bdfd-api.vercel.app"]
     },
     {
       "/api": {
+        
         "/bdfd": {
+          
           "/function": {
-            "q": "FUNCTION_TAG",
-            "(case_sensitive)": "BOOLEAN"
+            "method": "GET",
+            "parameter": {
+              "q": "FUNCTION_TAG"
+              "(case_sensitive)": "BOOLEAN"
+            }
           },
           "/callback": {
-            "q": "CALLBACK_NAME",
-            "(case_sensitive)": "BOOLEAN"
+            "method": "GET",
+            "parameter": {
+              "q": "CALLBACK_NAME",
+              "(case_sensitive)": "BOOLEAN"
+            }
           }
         },
+        
         "/discord": {
-          "PATH": "/v{version_number}/path/...",
-          "(token_type)": "TOKEN_TYPE",
-          "(token)": "TOKEN"
+          
+          "/v{version_number}/path/...": {
+            "(token_type)": "TOKEN_TYPE",
+            "(token)": "TOKEN"
+          }
         }
       }
     }
