@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
           }
         },
         "/discord": {
-          "PATH": "/v{version_number}/path/path/...",
+          "PATH": "/v{version_number}/path/...",
           "(token_type)": "TOKEN_TYPE",
           "(token)": "TOKEN"
         }
