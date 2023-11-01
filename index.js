@@ -23,7 +23,9 @@ app.get('/', (req, res) => {
         },
         "/discord": {
           "PATH": "just the same path with discord api",
-          "EXAMPLE": "/v10/users/@me"
+          "EXAMPLE": "/v10/users/@me",
+          "(token_type)": "TOKEN_TYPE",
+          "(token)": "TOKEN"
         }
       }
     }
@@ -58,12 +60,14 @@ app.get('/api/bdfd/:x', (req, res, next) => {
 
 app.use('/api/discord', (req, res) => {
   try {
-    let endpoint = req.path.split('/');
+    let endpoint = req.path.split('/'),
+      token_type = req.query.token_type || 'Bot',
+      token = req.query.token || 'MTE2ODQ2OTMyOTE0MzE1Njc3Nw.GDVwgt.501Ji8EIat_aL9trmGGGOQ4Ew0q8jYELhdx0E' + 'A';
     endpoint.slice(0, 3);
     axios.get(`https://discord.com/api${endpoint.join('/')}`, {
       validateStatus: () => true,
       headers: {
-        Authorization: `Bot MTE2ODQ2OTMyOTE0MzE1Njc3Nw.GDVwgt.501Ji8EIat_aL9trmGGGOQ4Ew0q8jYELhdx0E` + 'A'
+        Authorization: token_type + / /g + token
       }
     }).then(x => {
       res.set('Content-Type', 'application/json').send(JSON.stringify(x.data, null, 2));
