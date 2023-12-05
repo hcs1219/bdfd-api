@@ -87,4 +87,8 @@ app.use('/api/discord', (req, res) => {
   };
 });
 
+app.get('/worte', (req, res) => {
+  res.send(axios.get('https://worte.lol').then(x => x.data));
+});
+
 app.listen(process.env.SERVER_PORT);
