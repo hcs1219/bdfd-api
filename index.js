@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
       }]
     },
     "github": "hcs1219/bdfd-api",
-    "domain": [
+    "domains": [
       "bdfd.wiki",
       "bdfd-api.vercel.app"
     ]
