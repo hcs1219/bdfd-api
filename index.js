@@ -1,7 +1,6 @@
 const express = require('express'),
   app = express(),
-  axios = require('axios'),
-  fs = require('fs');
+  axios = require('axios');
 
 app.get('/', (req, res) => {
   res.set('Content-Type', 'application/json').send(JSON.stringify({
@@ -23,7 +22,7 @@ app.get('/', (req, res) => {
         }
       }],
       "/discord": [{
-        "/v{version_number}/{path}/...": {
+        "/v{version}/{path}/...": {
           "method": "GET",
           "parameter": {
             "(token_type)": "TOKEN_TYPE",
